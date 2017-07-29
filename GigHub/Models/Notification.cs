@@ -9,7 +9,7 @@ namespace GigHub.Models
 		public DateTime DateTime { get; private set; }
 		public NotificationType Type { get; private set; }
 		public DateTime? OriginalDateTime { get; private set; }
-		public string OriginalVeneu { get; private set; }
+		public string OriginalVenue { get; private set; }
 
 		[Required]
 		public Gig Gig { get; private set; }
@@ -32,7 +32,7 @@ namespace GigHub.Models
 		{
 			var notification = new Notification(NotificationType.GigUpdated, newGig);
 			notification.OriginalDateTime = originalDateTime;
-			notification.OriginalVeneu = originalVenue;
+			notification.OriginalVenue = originalVenue;
 
 			return notification;
 		}
