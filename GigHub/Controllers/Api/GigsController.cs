@@ -1,8 +1,5 @@
 ﻿using GigHub.Core;
-using GigHub.Persistence;
 using Microsoft.AspNet.Identity;
-using System.Data.Entity;
-using System.Linq;
 using System.Web.Http;
 
 namespace GigHub.Controllers.Api
@@ -22,6 +19,12 @@ namespace GigHub.Controllers.Api
 		{
 			var userId = User.Identity.GetUserId();
 			var gig = _unitOfWork.Gigs.GetGigWithAttendees(id);
+
+
+			if (gig == null)
+			{
+				return NotFound();
+			}
 
 			if (gig.IsCanceled)
 			{
