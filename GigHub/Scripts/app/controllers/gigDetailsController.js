@@ -21,10 +21,11 @@
     };
 
     var fail = function () {
-        alert("Something failed!");
+        alert("Something failed");
     };
 
     return {
         init: init
     }
+
 }(FollowingService);

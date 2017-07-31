@@ -7,11 +7,11 @@ using System.Web.Http;
 namespace GigHub.Controllers.Api
 {
 	[Authorize]
-    public class FollowingController : ApiController
-    {
-		private IUnitOfWork _unitOfWork;
+	public class FollowingsController : ApiController
+	{
+		private readonly IUnitOfWork _unitOfWork;
 
-		public FollowingController(IUnitOfWork unitOfWork)
+		public FollowingsController(IUnitOfWork unitOfWork)
 		{
 			_unitOfWork = unitOfWork;
 		}
@@ -22,18 +22,14 @@ namespace GigHub.Controllers.Api
 			var userId = User.Identity.GetUserId();
 
 			var following = _unitOfWork.Followings.GetFollowing(userId, dto.FolloweeId);
-
-			if(following != null)
-			{
-				return BadRequest("You are already following that artist!");
-			}
+			if (following != null)
+				return BadRequest("Following already exists.");
 
 			following = new Following
 			{
 				FollowerId = userId,
 				FolloweeId = dto.FolloweeId
 			};
-
 			_unitOfWork.Followings.Add(following);
 			_unitOfWork.Complete();
 
@@ -55,5 +51,5 @@ namespace GigHub.Controllers.Api
 
 			return Ok(id);
 		}
-    }
+	}
 }

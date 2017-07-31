@@ -2,15 +2,14 @@
 using GigHub.Core.Repositories;
 using GigHub.Persistence;
 using System.Linq;
-using System;
 
 namespace GigHub.Persistance.Repositories
 {
 	public class FollowRepository : IFollowRepository
 	{
-		private ApplicationDbContext _context;
+		private IApplicationDbContext _context;
 
-		public FollowRepository(ApplicationDbContext context)
+		public FollowRepository(IApplicationDbContext context)
 		{
 			_context = context;
 		}

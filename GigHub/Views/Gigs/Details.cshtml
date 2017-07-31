@@ -21,16 +21,17 @@
 <p>
     Performing at @Model.Gig.Venue on @Model.Gig.DateTime.ToString("d MMM") at @Model.Gig.DateTime.ToString("HH:mm")
 </p>
-@if (User.Identity.IsAuthenticated && Model.IsAttenting)
+
+@if (User.Identity.IsAuthenticated && Model.IsAttending)
 {
-    <p>You are going to this event.</p>
+    <p>You are going to this event. </p>
 }
 @section scripts
 {
     <script>
-        $.(document).ready(function () {
+        $(document).ready(function () {
             GigDetailsController.init();
         });
-        </script>
+    </script>
 }
 

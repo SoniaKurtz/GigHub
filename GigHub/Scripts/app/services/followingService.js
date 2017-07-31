@@ -3,11 +3,12 @@
         $.post("/api/followings", { followeeId: followeeId })
             .done(done)
             .fail(fail);
+
     };
 
     var deleteFollowing = function (followeeId, done, fail) {
         $.ajax({
-            ulr: "/api/followings/" + followeeId,
+            url: "/api/followings/" + followeeId,
             method: "DELETE"
         })
             .done(done)
