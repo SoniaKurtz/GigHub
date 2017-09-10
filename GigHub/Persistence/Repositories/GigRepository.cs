@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System;
 
-namespace GigHub.Persistance.Repositories
+namespace GigHub.Persistence.Repositories
 {
 	public class GigRepository : IGigRepository
 	{

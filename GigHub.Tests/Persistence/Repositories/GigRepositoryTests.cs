@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using GigHub.Core.Models;
-using GigHub.Persistance.Repositories;
+using GigHub.Persistence.Repositories;
 using GigHub.Persistence;
 using GigHub.Tests.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

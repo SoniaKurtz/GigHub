@@ -3,7 +3,7 @@ using GigHub.Core.Repositories;
 using GigHub.Persistence;
 using System.Linq;
 
-namespace GigHub.Persistance.Repositories
+namespace GigHub.Persistence.Repositories
 {
 	public class FollowRepository : IFollowRepository
 	{

@@ -15,16 +15,18 @@ namespace GigHub.Tests.Persistence.Repositories
 	{
 		private NotificationRepository _repository;
 		private Mock<DbSet<UserNotification>> _mockNotifications;
+		private Mock<IApplicationDbContext> _mockContext;
 
 		[TestInitialize]
 		public void TestInitialize()
 		{
 			_mockNotifications = new Mock<DbSet<UserNotification>>();
 
-			var mockContext = new Mock<IApplicationDbContext>();
-			mockContext.SetupGet(c => c.UserNotifications).Returns(_mockNotifications.Object);
+			_mockContext = new Mock<IApplicationDbContext>();
 
-			_repository = new NotificationRepository(mockContext.Object);
+			_mockContext.SetupGet(c => c.UserNotifications).Returns(_mockNotifications.Object);
+
+			_repository = new NotificationRepository(_mockContext.Object);
 		}
 
 
@@ -65,6 +67,8 @@ namespace GigHub.Tests.Persistence.Repositories
 			var userNotification = new UserNotification(user, notification);
 
 			_mockNotifications.SetSource(new[] { userNotification });
+
+			_mockContext.SetupGet(c => c.UserNotifications).Returns(_mockNotifications.Object);
 
 			var notifications = _repository.GetNewNotificationsFor(user.Id);
 
